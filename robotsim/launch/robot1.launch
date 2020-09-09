@@ -1,0 +1,11 @@
+<launch>
+  <param name ="robot_description" textfile = "$(find robotsim)/urdf/robot_model.urdf" />
+  
+  <arg name= "robot_rviz" default="$(find robotsim)/RViz/params1.rviz"/> 
+<!-- params1.rviz - initial paramaters of the robot -->
+
+  <node name = "robot_state_publisher" pkg = "robot_state_publisher" type = "robot_state_publisher" />
+  <node name="move_robot1" pkg="robotsim" type="move_robot.py" />
+  <node name="rviz" pkg="rviz" type ="rviz" args="-d $(arg robot_rviz)" />
+
+</launch>

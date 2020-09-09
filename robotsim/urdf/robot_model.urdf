@@ -1,0 +1,100 @@
+<robot name="tanya">
+
+  <material name="violet">
+    <color rgba="255 0 255 0.8" />
+  </material>
+  <material name="yellow">
+    <color rgba="255 255 0 0.8" />
+  </material>
+  
+
+## links
+  <link name="base_link">
+   <visual>
+    <geometry>
+      <box size="1 1 1" />
+    </geometry>
+    <material name="violet" />
+   </visual>
+   <collision>
+    <geometry>
+      <box size="1 1 1" />
+    </geometry>
+   </collision>	
+  </link>
+
+  <link name="body">
+   <visual>
+     <geometry>
+       <cylinder length="1.2" radius="0.2" />
+     </geometry>
+     <origin xyz="0 0 0.6" />
+     <material name="yellow" />
+   </visual>
+   <collision>
+     <geometry>
+       <cylinder length="1.2" radius="0.2" />
+     </geometry>
+   </collision>	
+  </link>
+
+  <link name="head">
+   <visual>
+     <geometry>
+       <sphere radius="0.5" />
+     </geometry>
+     <origin xyz="0 0 0.4" />
+     <material name="violet" />
+   </visual>
+   <collision>
+     <geometry>
+       <sphere radius="0.5" />
+     </geometry>
+   </collision>		
+  </link>
+
+
+  <link name="arm">
+   <visual>
+    <geometry>
+      <cylinder length="0.8" radius="0.07" />
+    </geometry>
+    <origin rpy="1.57075 0 1.57075" xyz="0.6 0 0" />
+    <material name="violet" />
+   </visual>	
+   <collision>
+     <geometry>
+       <cylinder length="0.8" radius="0.07" />
+     </geometry>
+   </collision>	
+  </link>
+## end links
+
+
+##joints
+##joint1
+  <joint name="base_to_body" type="prismatic">
+    <parent link="base_link"/>
+    <child link="body" />
+    <limit effort="1000.0" lower="-0.5" upper="0" velocity="0.5"/>
+    <origin xyz="0.2 0.2 0.5" rpy="0 0 1" />
+  </joint>
+
+
+##joint2
+  <joint name="body_to_head" type="continuous">
+    <parent link="body"/>
+    <child link="head"/>
+    <origin xyz="0 0 1.2" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+
+##joint3
+  <joint name="body_to_arm" type="continuous">
+    <parent link="body"/>
+    <child link="arm"/>
+    <origin xyz="0 0 0.6" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+  </joint>
+</robot>
