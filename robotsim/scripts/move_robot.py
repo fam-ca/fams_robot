@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# license removed for brevity
+
 import rospy
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Header
@@ -7,15 +7,12 @@ import time
 
 def move_robot1():
     my_pub = rospy.Publisher('joint_states',JointState, queue_size=10)
-    rospy.init_node('move_robot', anonymous=True) #add in launch!
+    rospy.init_node('move_robot', anonymous=True) 
     rate_msg = rospy.Rate(15)
     robot_state = JointState()
     robot_state.header = Header()
     robot_state.header.stamp = rospy.Time.now()
-    robot_state.header.frame_id = 'stroka' # can comment
     robot_state.name = ['base_to_body', 'body_to_head', 'body_to_arm'] 
-    robot_state.velocity = [] # can comment
-    robot_state.effort = [] # can comment
 
 
     base_to_body = -0.5
