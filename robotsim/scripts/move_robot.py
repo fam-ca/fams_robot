@@ -3,7 +3,6 @@
 import rospy
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Header
-import time
 
 def move_robot1():
     my_pub = rospy.Publisher('joint_states',JointState, queue_size=10)
@@ -31,7 +30,7 @@ def move_robot1():
         
         my_pub.publish(robot_state)
         rate_msg.sleep()  
-        time.sleep(0.1)      
+             
 if __name__ == '__main__':
     try:
         move_robot1()
